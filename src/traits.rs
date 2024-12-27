@@ -93,7 +93,7 @@ pub trait AudioTagEdit: AudioTagConfig {
     fn remove_album_cover(&mut self);
 
     fn composer(&self) -> Option<&str>;
-    fn set_composer(&mut self, composer: String);
+    fn set_composer(&mut self, composer: &str);
     fn remove_composer(&mut self);
 
     fn track(&self) -> (Option<u16>, Option<u16>) {
@@ -141,7 +141,7 @@ pub trait AudioTagEdit: AudioTagConfig {
     fn remove_genre(&mut self);
 
     fn comment(&self) -> Option<&str>;
-    fn set_comment(&mut self, genre: String);
+    fn set_comment(&mut self, comment: &str);
     fn remove_comment(&mut self);
 }
 

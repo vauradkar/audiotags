@@ -196,8 +196,8 @@ impl AudioTagEdit for FlacTag {
     fn composer(&self) -> Option<&str> {
         self.get_first("COMPOSER")
     }
-    fn set_composer(&mut self, composer: String) {
-        self.set_first("COMPOSER", &composer);
+    fn set_composer(&mut self, composer: &str) {
+        self.set_first("COMPOSER", composer);
     }
     fn remove_composer(&mut self) {
         self.remove("COMPOSER")
@@ -274,8 +274,8 @@ impl AudioTagEdit for FlacTag {
     fn comment(&self) -> Option<&str> {
         self.get_first("COMMENT")
     }
-    fn set_comment(&mut self, v: String) {
-        self.set_first("COMMENT", &v);
+    fn set_comment(&mut self, v: &str) {
+        self.set_first("COMMENT", v);
     }
     fn remove_comment(&mut self) {
         self.remove("COMMENT");

@@ -182,7 +182,7 @@ impl AudioTagEdit for Id3v2Tag {
 
         None
     }
-    fn set_composer(&mut self, composer: String) {
+    fn set_composer(&mut self, composer: &str) {
         self.inner.add_frame(Frame::text("TCOM", composer));
     }
     fn remove_composer(&mut self) {
@@ -247,11 +247,11 @@ impl AudioTagEdit for Id3v2Tag {
         }
         None
     }
-    fn set_comment(&mut self, comment: String) {
+    fn set_comment(&mut self, comment: &str) {
         self.inner.add_frame(id3::frame::Comment {
             lang: "XXX".to_string(),
             description: "".to_string(),
-            text: comment,
+            text: comment.to_owned(),
         });
     }
     fn remove_comment(&mut self) {

@@ -74,7 +74,7 @@ macro_rules! test_file {
             assert!(tags.genre().is_none());
             tags.remove_genre();
 
-            tags.set_comment("foo song comment".to_string());
+            tags.set_comment("foo song comment");
             assert_eq!(tags.comment(), Some("foo song comment"));
             tags.remove_comment();
             assert!(tags.comment().is_none());

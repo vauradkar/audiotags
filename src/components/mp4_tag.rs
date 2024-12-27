@@ -243,7 +243,7 @@ impl AudioTagEdit for Mp4Tag {
     fn composer(&self) -> Option<&str> {
         self.inner.composer()
     }
-    fn set_composer(&mut self, composer: String) {
+    fn set_composer(&mut self, composer: &str) {
         self.inner.set_composer(composer);
     }
     fn remove_composer(&mut self) {
@@ -307,7 +307,7 @@ impl AudioTagEdit for Mp4Tag {
     fn comment(&self) -> Option<&str> {
         self.inner.comment()
     }
-    fn set_comment(&mut self, comment: String) {
+    fn set_comment(&mut self, comment: &str) {
         self.inner.set_comment(comment);
     }
     fn remove_comment(&mut self) {
