@@ -249,7 +249,7 @@ impl AudioTagEdit for Id3v2Tag {
     }
     fn set_comment(&mut self, comment: &str) {
         self.inner.add_frame(id3::frame::Comment {
-            lang: "XXX".to_string(),
+            lang: self.config.lang.clone(),
             description: "".to_string(),
             text: comment.to_owned(),
         });

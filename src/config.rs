@@ -5,6 +5,8 @@ pub struct Config {
     pub sep_artist: &'static str,
     /// Parse multiple artists from a single string using the separator specified above
     pub parse_multiple_artists: bool,
+    /// language of the comments. Defaults to "XXX"
+    pub lang: String,
 }
 
 impl Default for Config {
@@ -12,6 +14,7 @@ impl Default for Config {
         Self {
             sep_artist: ";",
             parse_multiple_artists: true,
+            lang: "XXX".to_string(),
         }
     }
 }
@@ -22,6 +25,10 @@ impl Config {
     }
     pub fn parse_multiple_artists(mut self, parse_multiple_artists: bool) -> Self {
         self.parse_multiple_artists = parse_multiple_artists;
+        self
+    }
+    pub fn language(mut self, lang: &'static str) -> Self {
+        self.lang = lang.to_owned();
         self
     }
 }
