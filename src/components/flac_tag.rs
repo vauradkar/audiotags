@@ -280,6 +280,16 @@ impl AudioTagEdit for FlacTag {
     fn remove_comment(&mut self) {
         self.remove("COMMENT");
     }
+
+    fn lyricist(&self) -> Option<&str> {
+        self.get_first("LYRICIST")
+    }
+    fn set_lyricist(&mut self, lyricist: &str) {
+        self.set_first("LYRICIST", lyricist);
+    }
+    fn remove_lyricist(&mut self) {
+        self.remove("LYRICIST");
+    }
 }
 
 impl AudioTagWrite for FlacTag {

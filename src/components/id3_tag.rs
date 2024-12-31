@@ -257,6 +257,22 @@ impl AudioTagEdit for Id3v2Tag {
     fn remove_comment(&mut self) {
         self.inner.remove("COMM");
     }
+
+    fn lyricist(&self) -> Option<&str> {
+        if let Some(Content::Text(text)) = self.inner.get("TEXT").map(Frame::content) {
+            return Some(text);
+        }
+
+        None
+    }
+
+    fn set_lyricist(&mut self, lyricist: &str) {
+        self.inner.add_frame(Frame::text("TEXT", lyricist));
+    }
+
+    fn remove_lyricist(&mut self) {
+        self.inner.remove("TEXT");
+    }
 }
 
 impl AudioTagWrite for Id3v2Tag {

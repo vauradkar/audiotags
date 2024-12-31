@@ -313,6 +313,18 @@ impl AudioTagEdit for Mp4Tag {
     fn remove_comment(&mut self) {
         self.inner.remove_comments();
     }
+
+    fn lyricist(&self) -> Option<&str> {
+        self.inner.lyricist()
+    }
+
+    fn set_lyricist(&mut self, lyricist: &str) {
+        self.inner.set_lyricist(lyricist);
+    }
+
+    fn remove_lyricist(&mut self) {
+        self.inner.remove_lyricists();
+    }
 }
 
 impl AudioTagWrite for Mp4Tag {
