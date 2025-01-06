@@ -81,6 +81,9 @@ pub use types::*;
 pub mod config;
 pub use config::Config;
 
+pub mod clear_tag;
+pub use clear_tag::ClearTag;
+
 use std::convert::From;
 use std::fs::File;
 use std::path::Path;
@@ -159,6 +162,30 @@ impl Tag {
                 t.set_config(self.config);
                 t
             })),
+        }
+    }
+
+    /// Builds `ClearTag`` - a more transparent variant of `AudioTag`.
+    pub fn build_clear_tag(&self, path: impl AsRef<Path>) -> crate::Result<ClearTag> {
+        match self
+            .tag_type
+            .unwrap_or(TagType::try_from_path(path.as_ref())?)
+        {
+            TagType::Id3v2 => Ok({
+                let mut t = Id3v2Tag::read_from_path(path)?;
+                t.set_config(self.config);
+                ClearTag::Id3(t)
+            }),
+            TagType::Mp4 => Ok({
+                let mut t = Mp4Tag::read_from_path(path)?;
+                t.set_config(self.config);
+                ClearTag::Mp4(t)
+            }),
+            TagType::Flac => Ok({
+                let mut t = FlacTag::read_from_path(path)?;
+                t.set_config(self.config);
+                ClearTag::Flac(t)
+            }),
         }
     }
 }

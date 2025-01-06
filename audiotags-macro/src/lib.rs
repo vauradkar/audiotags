@@ -30,6 +30,20 @@ macro_rules! impl_tag {
                     config: Config::default(),
                 })
             }
+
+            /// Returns a reference to inner format dependent tag.
+            /// This can be useful to process frames other than those
+            /// supported by `AudioTag`
+            pub fn inner_ref(&self) -> &$inner {
+                &self.inner
+            }
+
+            /// Returns a mutable reference to inner format dependent tag.
+            /// This can be useful to process frames other than those
+            /// supported by `AudioTag`
+            pub fn inner_mut_ref(&mut self) -> &mut $inner {
+                &mut self.inner
+            }
         }
         impl_audiotag_config!($tag);
 

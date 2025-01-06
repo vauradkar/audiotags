@@ -16,6 +16,7 @@ mp4ameta = { git = "https://github.com/vauradkar/mp4ameta.git", features = ["ser
 metaflac = { git = "https://github.com/vauradkar/rust-metaflac.git", features = ["serde"] }
 thiserror = "1.0.50"
 audiotags-macro = { version = "0.2", path = "./audiotags-macro" }
+paste = { version = "1.0.15" }
 
 [dev-dependencies]
 tempfile = "3.8.1"
