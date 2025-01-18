@@ -2,7 +2,7 @@ use id3::Timestamp;
 
 use crate::{
     Album, AudioTag, AudioTagConfig, AudioTagEdit, AudioTagWrite, FlacTag, Id3v2Tag, Mp4Tag,
-    Picture, ToAny, ToAnyTag,
+    Picture, Result, ToAny, ToAnyTag,
 };
 
 /// A enum that contains all tag formats as variants. This helps to have
@@ -133,8 +133,8 @@ impl AudioTagEdit for ClearTag {
 }
 
 impl AudioTagWrite for ClearTag {
-    make_update_op_ret!(write_to, &mut Self, &mut std::fs::File, crate::Result<()>);
-    make_update_op_ret!(write_to_path, &mut Self, &str, crate::Result<()>);
+    make_update_op_ret!(write_to, &mut Self, &mut std::fs::File, Result<()>);
+    make_update_op_ret!(write_to_path, &mut Self, &str, Result<()>);
 }
 
 impl ToAny for ClearTag {
